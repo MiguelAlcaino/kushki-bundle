@@ -1,0 +1,30 @@
+parameters:
+    kushki_public_id: '%env(KUSHKI_PUBLIC_ID)%'
+    kushki_private_id: '%env(KUSHKI_PRIVATE_ID)%'
+    env(KUSHKI_PUBLIC_ID): 'YOUR-KUSHKI-PUBLIC-ID'
+    env(KUSHKI_PRIVATE_ID): 'YOUR-KUSHKI-PRIVATE-ID'
+    env(KUSHKI_LANG): 'kushki\lib\KushkiLanguage::ES'
+    env(KUSHKI_CURRENCY): 'kushki\lib\KushkiCurrency::COP'
+    env(KUSHKI_ENV): 'kushki\lib\KushkiEnvironment::TESTING'
+
+services:
+    _defaults:
+        public: false
+    #CONTROLLERS
+    MiguelAlcaino\KushkiBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    #SERVICES
+    miguelalcaino.kushki.service:
+        class: MiguelAlcaino\KushkiBundle\Service\KushkiService
+        arguments:
+            $kushki: '@kushki'
+    MiguelAlcaino\KushkiBundle\Service\KushkiService: '@miguelalcaino.kushki.service'
+    kushki:
+        class: kushki\lib\Kushki
+        arguments:
+            - '%kushki_private_id%'
+            - '%env(const:KUSHKI_LANG)%'
+            - '%env(const:KUSHKI_CURRENCY)%'
+            - '%env(const:KUSHKI_ENV)%'

@@ -1,0 +1,2 @@
+creditcard.card_holder.not_blank: 'Debes completar el nombre en la tarjeta.'
+creditcard.card_holder.length_min: 'El nombre en la tarjeta debe contener más de 2 letras.'

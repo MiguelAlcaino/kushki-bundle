@@ -1,0 +1,19 @@
+{
+    "name": "miguelalcaino/kushki-bundle",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Miguel Alcaino",
+            "email": "miguel.alcaino@ogb.cl"
+        }
+    ],
+    "require": {
+        "kushki/kushki-php": "^1.2",
+        "miguelalcaino/payment-gateway": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MiguelAlcaino\\KushkiBundle\\": "src"
+        }
+    }
+}
