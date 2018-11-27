@@ -124,9 +124,9 @@ class CreditCardType extends AbstractType
             ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function getBlockPrefix()
     {
-
+        return 'kushki_credit_card';
     }
 
 }
