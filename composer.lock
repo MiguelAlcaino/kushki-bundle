@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78e6fbc6e8e17f595d5a8980210cb7f3",
+    "content-hash": "6c8ec9e4c3a5c7111eba5a2dba096607",
     "packages": [
         {
             "name": "kushki/kushki-php",
