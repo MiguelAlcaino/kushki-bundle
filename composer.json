@@ -11,6 +11,9 @@
         "kushki/kushki-php": "^1.2",
         "miguelalcaino/payment-gateway": "^1.0"
     },
+    "autoload-dev": {
+        "psr-4": { "MiguelAlcaino\\KushkiBundle\\Tests\\": "tests/" }
+    },
     "autoload": {
         "psr-4": {
             "MiguelAlcaino\\KushkiBundle\\": "src"
