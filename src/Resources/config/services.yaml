@@ -10,10 +10,6 @@ parameters:
 services:
     _defaults:
         public: false
-    #CONTROLLERS
-    MiguelAlcaino\KushkiBundle\Controller\:
-        resource: '../../Controller'
-        tags: ['controller.service_arguments']
 
     #SERVICES
     miguelalcaino.kushki.service:
