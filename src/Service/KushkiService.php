@@ -5,6 +5,7 @@ namespace MiguelAlcaino\KushkiBundle\Service;
 use kushki\lib\Amount;
 use kushki\lib\ExtraTaxes;
 use kushki\lib\Kushki;
+use kushki\lib\Transaction;
 
 class KushkiService
 {
@@ -29,15 +30,15 @@ class KushkiService
     /**
      * Executes a Kushki charge by a given $creditCardToken and a $amount
      *
-     * @param string $creditCardToken
-     * @param        $amount
-     * @param array  $metadata
+     * @param string     $creditCardToken
+     * @param string|int $amount
+     * @param array      $metadata
      *
-     * @return \kushki\lib\Transaction
+     * @return Transaction
      * @throws \kushki\lib\KushkiException
      *
      */
-    public function charge(string $creditCardToken, $amount, array $metadata = [])
+    public function charge(string $creditCardToken, $amount, array $metadata = []): ?Transaction
     {
         $subtotalIva       = $amount;
         $iva               = 0;
@@ -55,15 +56,15 @@ class KushkiService
     /**
      * Number of months sent from the browser in the kushkiDeferred parameter, converted to Integer
      *
-     * @param string $creditCardToken
-     * @param        $amount
-     * @param int    $months
-     * @param array  $metadata
+     * @param string     $creditCardToken
+     * @param string|int $amount
+     * @param int        $months
+     * @param array      $metadata
      *
-     * @return \kushki\lib\Transaction
+     * @return Transaction
      * @throws \kushki\lib\KushkiException
      */
-    public function deferredCharge(string $creditCardToken, $amount, int $months, array $metadata = [])
+    public function deferredCharge(string $creditCardToken, $amount, int $months, array $metadata = []): ?Transaction
     {
         $subtotalIva  = $amount;
         $iva          = 0;
@@ -76,12 +77,12 @@ class KushkiService
 
     /**
      * @param $ticketNumber
-     * @param $amount
      *
-     * @return \kushki\lib\Transaction
+     * @return Transaction
      * @throws \kushki\lib\KushkiException
      */
-    public function refund($ticketNumber){
+    public function refund($ticketNumber): ?Transaction
+    {
         return $this->kushki->voidCharge($ticketNumber);
     }
 }
