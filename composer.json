@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "php": "^7.1.13",
+        "php": "^7.1.11",
         "kushki/kushki-php": "^1.2",
         "miguelalcaino/payment-gateway": "^1.0",
         "symfony/form": "^4.2",
@@ -26,6 +26,6 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^7"
+        "symfony/phpunit-bridge": "*"
     }
 }
