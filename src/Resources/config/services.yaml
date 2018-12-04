@@ -2,6 +2,8 @@ parameters:
     kushki_public_id: '%env(KUSHKI_PUBLIC_ID)%'
     kushki_private_id: '%env(KUSHKI_PRIVATE_ID)%'
     kushki_is_dev: '%env(bool:KUSHKI_IS_DEV)%'
+    kushki_lang: '%env(const:KUSHKI_LANG)%'
+    kushki_currency: '%env(const:KUSHKI_CURRENCY)%'
     env(KUSHKI_PUBLIC_ID): 'YOUR-KUSHKI-PUBLIC-ID'
     env(KUSHKI_PRIVATE_ID): 'YOUR-KUSHKI-PRIVATE-ID'
     env(KUSHKI_LANG): 'kushki\lib\KushkiLanguage::ES'
