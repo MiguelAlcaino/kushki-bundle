@@ -15,15 +15,17 @@ services:
         public: false
 
     #SERVICES
-    kushki\lib\Kushki:
-        factory: MiguelAlcaino\KushkiBundle\Service\KushkiFactory:create
+    MiguelAlcaino\KushkiBundle\Service\KushkiFactory:
+    kushki:
+        class: kushki\lib\Kushki:
+        factory: 'MiguelAlcaino\KushkiBundle\Service\KushkiFactory:create'
         arguments:
             - '%kushki_private_id%'
-            - '%env(const:KUSHKI_LANG)%'
-            - '%env(const:KUSHKI_CURRENCY)%'
+            - '%kushki_lang%'
+            - '%kushki_currency%'
             - '%kushki_is_dev%'
     miguelalcaino.kushki.service:
         class: MiguelAlcaino\KushkiBundle\Service\KushkiService
         arguments:
-            $kushki: kushki\lib\Kushki
+            $kushki: '@kushki'
     MiguelAlcaino\KushkiBundle\Service\KushkiService: '@miguelalcaino.kushki.service'
