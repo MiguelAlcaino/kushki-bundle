@@ -40,9 +40,9 @@ class KushkiService
      */
     public function charge(string $creditCardToken, $amount, array $metadata = []): ?Transaction
     {
-        $subtotalIva       = $amount;
+        $subtotalIva       = 0;
         $iva               = 0;
-        $subtotalIva0      = 0;
+        $subtotalIva0      = $amount;
         $propina           = 0;
         $tasaAeroportuaria = 0;
         $agenciaDeViaje    = 0;
