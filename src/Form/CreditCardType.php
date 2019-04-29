@@ -4,7 +4,9 @@ namespace MiguelAlcaino\KushkiBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
@@ -30,7 +32,7 @@ class CreditCardType extends AbstractType
                     ])
                 ]
             ])
-            ->add('cardNumber', TextType::class, [
+            ->add('cardNumber', HiddenType::class, [
                 'required' => true,
                 'constraints' => [
                     new Luhn([
@@ -42,18 +44,14 @@ class CreditCardType extends AbstractType
                         'minMessage' => 'El número de la tarjeta debe contener al menos 13 digitos',
                         'maxMessage' => 'El número de la tarjeta debe contener al máximo 19 digitos'
                     ])
-                ],
-                'attr' => [
-                    'onkeydown' => 'return ( event.ctrlKey || event.altKey 
-                    || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) 
-                    || (95<event.keyCode && event.keyCode<106)
-                    || (event.keyCode==8) || (event.keyCode==9) 
-                    || (event.keyCode>34 && event.keyCode<40) 
-                    || (event.keyCode==46) )',
-                    'autocomplete' => 'off',
-                    'minlength' => 13,
-                    'maxlength' => 19
                 ]
+            ])
+            ->add('cardNumberFormatted', TelType::class, [
+                'required' => true,
+                'attr' => [
+                    'placeholder' => '---- ---- ---- ----',
+                    'style' => 'font-family: monospace;font-size: 15px;',
+                ],
             ])
             ->add('month', ChoiceType::class, [
                 'empty_data' => null,
@@ -99,12 +97,6 @@ class CreditCardType extends AbstractType
             ->add('cvc', PasswordType::class, [
                 'required' => true,
                 'attr' => [
-                    'onkeydown' => 'return ( event.ctrlKey || event.altKey 
-                    || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) 
-                    || (95<event.keyCode && event.keyCode<106)
-                    || (event.keyCode==8) || (event.keyCode==9) 
-                    || (event.keyCode>34 && event.keyCode<40) 
-                    || (event.keyCode==46) )',
                     'autocomplete' => 'off',
                     'maxlength' => 4,
                     'minlength' => 3
