@@ -66,9 +66,9 @@ class KushkiService
      */
     public function deferredCharge(string $creditCardToken, $amount, int $months, array $metadata = []): ?Transaction
     {
-        $subtotalIva  = $amount;
+        $subtotalIva  = 0;
         $iva          = 0;
-        $subtotalIva0 = 0;
+        $subtotalIva0 = $amount;
         $ice          = 0;
         $kushkiAmount = new Amount($subtotalIva, $iva, $subtotalIva0, $ice);
 
